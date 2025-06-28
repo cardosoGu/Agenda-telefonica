@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Agenda</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <%if(user){%> <!--se nao estiver logado, apareca para fzr login -->
+
+          <form action="/contato" method="GET">
+            <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+            <button type="submit" class="btn btn-link nav-link me-3"style="padding:0; border:none; background:none;">Adicionar Contato</button></form>
+          
+            <form action="/login/logout" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+            <button type="submit" class="btn btn-link nav-link"style="padding:0; border:none; background:none;">Finalizar sessão</button></form>
+ 
+            <%} else { %>
+            <li class="nav-item">
+              <a class="navbar-brand" href="/login">faça login</a>
+              <%}%>
+            </li>
+      </ul>
+    </div>
+  </div>
+</nav>

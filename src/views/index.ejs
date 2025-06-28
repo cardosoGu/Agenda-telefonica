@@ -1,0 +1,47 @@
+<%- include('includes/head.ejs')%>
+<%- include('includes/nav.ejs')%>
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-2">
+
+    </div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Agenda</h1>
+
+      <%- include('includes/messages.ejs')%>
+      
+    </div>
+ <%if(user){%>
+  <p class="text-center lead">Seus contatos abaixo:</p>
+    <div class="responsive-table">
+      <table class="table my-3">
+        <%for(contato of contatos){%>
+        <tr>
+        <td><%= contato.nome%></td>
+        <td><%= contato.sobrenome%></td>
+        <td><%= contato.numero%></td>
+        <td><form action="/contato/delete/<%= contato._id %>" method="POST" style="display:inline;">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+        </form></td>
+         <td><form action="/contato/<%= contato._id %>" method="GET" style="display:inline;">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-sm">Editar</button>
+        </form></td>
+
+        </tr>
+        <%}%>
+      </table>
+       <%} else{%>
+          <p class="text-center lead">Favor realizar Login!</p>
+
+
+        <%}%>
+      
+    </div>
+  </div>
+  </div>
+ 
+<%- include('includes/footer.ejs')%>
