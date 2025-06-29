@@ -1,6 +1,6 @@
 # Projeto Agenda
 
-Agenda simples feita com Node.js, Express e MongoDB pra gerenciar contatos de usuários.
+Agenda telefonica, simples feita com Node.js, Express e MongoDB pra gerenciar contatos de usuários.
 
 ---
 
